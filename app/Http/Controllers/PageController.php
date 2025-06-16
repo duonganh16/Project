@@ -9,7 +9,8 @@ class PageController extends Controller
     // Trang chủ
     public function home()
     {
-        return view('home');
+        $products = Product::all();
+        return view('home', compact('products'));
     }
 
     // Trang giới thiệu
