@@ -1,23 +1,20 @@
-
-@extends('layouts.app')
+@extends('layouts.app') {{-- nếu chưa có layout thì có thể bỏ dòng này --}}
 
 @section('content')
 <div class="container">
-    <h2 class="mb-4">Sản phẩm nổi bật</h2>
-
+    <h1>Danh sách sản phẩm</h1>
     <div class="row">
-        @foreach($products as $product)
+        @foreach ($products as $product)
             <div class="col-md-4 mb-4">
-                <div class="card h-100">
+                <div class="card">
+                    @if($product->image)
+                        <img src="{{ asset('images/' . $product->image) }}" class="card-img-top" alt="{{ $product->name }}">
+                    @endif
                     <div class="card-body">
                         <h5 class="card-title">{{ $product->name }}</h5>
                         <p class="card-text">{{ $product->description }}</p>
-                        <p class="card-text"><strong>Giá:</strong> {{ $product->price }} VNĐ</p>
+                        <p class="card-text text-danger"><strong>{{ number_format($product->price, 0) }}₫</strong></p>
                         <a href="/product/{{ $product->id }}" class="btn btn-primary">Xem chi tiết</a>
-                        <form action="/cart/add/{{ $product->id }}" method="POST" class="mt-2">
-                            @csrf
-                            <button type="submit" class="btn btn-success">Thêm vào giỏ</button>
-                        </form>
                     </div>
                 </div>
             </div>

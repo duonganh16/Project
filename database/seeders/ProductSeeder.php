@@ -2,22 +2,25 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Product;
 
 class ProductSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
-        //
         Product::create([
-        'name' => 'Thức ăn cho mèo Whiskas',
-        'description' => 'Thức ăn hạt khô cho mèo vị cá ngừ.',
-        'price' => 120000,
-        'image' => 'whiskas.png'
-    ]);
+            'name' => 'Thức ăn cho chó Pedigree 3kg',
+            'description' => 'Thức ăn khô dinh dưỡng cao cho chó trưởng thành.',
+            'price' => 250000,
+            'image' => 'pedigree.jpg',
+        ]);
+
+        Product::create([
+            'name' => 'Thức ăn cho mèo Whiskas 1.5kg',
+            'description' => 'Dành cho mèo lớn từ 1 tuổi trở lên.',
+            'price' => 180000,
+            'image' => 'whiskas.jpg',
+        ]);
     }
 }
