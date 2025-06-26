@@ -15,6 +15,13 @@
 - Lưu trữ dữ liệu trên Cloud (Aiven)
 
 ---
+## Mục tiêu
+- Tạo một website thương mại điện tử đơn giản dùng Laravel.
+- Làm quen với các khái niệm như: route, controller, model, migration, seeder, middleware.
+- Thực hành thao tác giỏ hàng, xử lý đơn hàng, xác thực người dùng.
+- Làm quen với template Blade và Bootstrap để thiết kế giao diện người dùng.
+
+---
 
 ## 🧩 Công nghệ sử dụng
 
@@ -24,6 +31,16 @@
 - Bootstrap (Giao diện)
 - Storage cho ảnh sản phẩm
 
+---
+## Cấu trúc thư mục chính
+petfood-shop/
+├── app/
+├── resources/
+│   └── views/
+├── routes/
+├── public/
+├── database/
+└── composer.json
 ---
 
 ## 📦 Các đối tượng chính (3+)
@@ -41,7 +58,6 @@
 
 ![Image](https://github.com/user-attachments/assets/47044b1e-afb0-4c46-8bc0-d0682254e8d9)
 
-*Giải thích:*  
 Quan hệ giữa các đối tượng được biểu diễn rõ ràng:
 - 1 `User` có nhiều `Order`
 - 1 `Category` có nhiều `Product`
@@ -80,7 +96,57 @@ Quan hệ giữa các đối tượng được biểu diễn rõ ràng:
 ![Image](https://github.com/user-attachments/assets/0fb5dc4d-d87c-49a6-9d41-6bd7da2d6326)
 
 ---
+## Hướng dẫn cài đặt
 
+- git clone https://github.com/duonganh16/petfood-shop.git
+ cd petfood-shop
+- composer install
+- cp .env.example .env
+- php artisan key:generate
+- php artisan migrate --seed
+- php artisan serve
+---
+## Dữ liệu mẫu (Seeder)
+- Admin: admin@example.com / password
+- User: user@example.com / password
+---
+## Bảo mật và xác thực
+- Laravel Breeze cho login/register/logout
+- Middleware kiểm tra phân quyền
+- CSRF token cho form
+- Flash message
+---
+## Các tệp quan trọng
+- web.php
+- ProductController.php
+- CartController.php
+- OrderController.php
+- AdminController.php
+- ContactController.php
+---
+## Sơ đồ kiến trúc hệ thống
+- [Trình duyệt] -> [Laravel Router] -> [Controller] -> [Model] -> [Database]
+---
+## Quy trình hoạt động
+- Đặt hàng: Xem -> Giỏ -> Thanh toán
+- Admin: Đăng nhập -> Xử lý đơn hàng
+---
+## Mô tả chức năng chi tiết
+- Đăng ký / Đăng nhập
+- Xem sản phẩm
+- Thêm giỏ hàng
+- Đặt hàng
+- Admin dashboard
+---
+## Thống kê	
+- Tổng số người dùng, doanh thu, đơn hàng
+---
+## Hướng dẫn bảo trì
+- composer update
+- mysqldump
+- xem log
+- clear cache
+---
 ## 💡 Code minh hoạ
 
 ### ✨ `Product` Model
