@@ -29,6 +29,7 @@
 ## 📦 Các đối tượng chính (3+)
 
 - `User`: người dùng đăng nhập
+- 'Admin' : người quản lý sản phẩm
 - `Product`: sản phẩm thú cưng
 - `Category`: danh mục sản phẩm
 - `Order`: đơn đặt hàng
@@ -38,7 +39,7 @@
 
 ## 🧱 Sơ đồ cấu trúc (Class Diagram)
 
-![Class Diagram](images/class-diagram.png)
+![Image](https://github.com/user-attachments/assets/47044b1e-afb0-4c46-8bc0-d0682254e8d9)
 
 *Giải thích:*  
 Quan hệ giữa các đối tượng được biểu diễn rõ ràng:
@@ -52,11 +53,11 @@ Quan hệ giữa các đối tượng được biểu diễn rõ ràng:
 
 ### 1. Activity Diagram: Đặt hàng sản phẩm
 
-![Activity Diagram](activity-order.png)
+![Image](https://github.com/user-attachments/assets/46e8a701-e675-47de-a349-db8152a6f1d0)
 
 ### 2. Activity Diagram: Hiển thị sản phẩm theo danh mục
 
-![Activity Diagram](activity-filter-category.png)
+![Image](https://github.com/user-attachments/assets/41f10b41-3009-4457-b124-40aa7114932c)
 
 ---
 
@@ -122,7 +123,7 @@ public function placeOrder(Request $request)
     return redirect()->route('orders.index')->with('success', 'Đặt hàng thành công!');
 }
 🌍 Liên kết dự án
-🔗 Link Repo GitHub: 
+🔗 Link Repo GitHub: https://github.com/duonganh16/Project
 
 🌐 Link Demo Codespace (public): 
 
