@@ -142,9 +142,99 @@ public function placeOrder(Request $request)
 ✅ Escape XSS trong Blade: {{ $data }}
 
 
-📞 Liên hệ
-Sinh viên: Nguyễn Văn A
-Email: nguyenvana.b21@student.ptit.edu.vn
+---
 
-yaml
-Sao chép mã
+## � Tính năng Bảo mật đã triển khai
+
+### ✅ Authentication & Authorization
+- **Laravel Breeze**: Hệ thống đăng nhập/đăng ký hoàn chỉnh
+- **Admin Middleware**: Phân quyền admin với `is_admin` flag
+- **Policy Authorization**: ProductPolicy kiểm soát quyền truy cập CRUD
+- **Session Security**: Cấu hình session bảo mật với encryption
+
+### ✅ CSRF Protection
+- **CSRF Token**: Tất cả form đều có `@csrf` protection
+- **Middleware**: VerifyCsrfToken middleware được kích hoạt
+- **AJAX Protection**: Token được embed trong meta tag
+
+### ✅ XSS Protection
+- **Input Sanitization**: XssProtection middleware loại bỏ HTML tags
+- **Output Escaping**: Blade template engine tự động escape `{{ }}`
+- **Custom Helper**: SecurityHelper::escape() cho output manual
+
+### ✅ Data Validation
+- **Form Request**: ProductRequest với validation rules chi tiết
+- **File Upload**: Validate MIME type, size, dimensions cho hình ảnh
+- **Input Cleaning**: Strip tags và sanitize input data
+- **Regex Validation**: Kiểm tra format tên sản phẩm
+
+### ✅ Rate Limiting
+- **Admin Routes**: Giới hạn 30 requests/phút cho admin panel
+- **IP-based**: Rate limiting theo IP address
+- **Middleware**: RateLimitMiddleware tùy chỉnh
+
+### ✅ Database Security
+- **Eloquent ORM**: Tránh SQL Injection tự động
+- **Prepared Statements**: Laravel sử dụng PDO prepared statements
+- **Soft Deletes**: Bảo vệ dữ liệu với soft delete thay vì hard delete
+
+---
+
+## 🌐 Cloud Deployment
+
+### 🚀 Chuẩn bị Deploy
+- **Environment**: File `.env.production` cho production
+- **Docker**: Dockerfile và docker-compose.yml
+- **Deploy Script**: `deploy.sh` tự động hóa deployment
+- **Apache Config**: Cấu hình Apache cho production
+
+### 📋 Hướng dẫn Deploy lên Cloud
+
+#### Railway Platform
+```bash
+# 1. Cài đặt Railway CLI
+npm install -g @railway/cli
+
+# 2. Login và khởi tạo project
+railway login
+railway init
+
+# 3. Deploy
+railway up
+```
+
+#### Manual Server
+```bash
+# 1. Upload code lên server
+# 2. Chạy script deployment
+chmod +x deploy.sh
+./deploy.sh
+```
+
+### 🔧 Production Configuration
+- **APP_ENV**: production
+- **APP_DEBUG**: false
+- **HTTPS**: SSL certificate required
+- **Database**: MySQL trên cloud (Aiven/PlanetScale)
+- **Storage**: Public disk với symbolic link
+
+---
+
+## 👥 Tài khoản Test
+
+### Admin Account
+- **Email**: admin@petfood.com
+- **Password**: admin123
+- **Quyền**: Quản lý sản phẩm, xem orders
+
+### Customer Account
+- **Email**: test@example.com
+- **Password**: password
+- **Quyền**: Mua hàng, xem lịch sử đơn hàng
+
+---
+
+📞 Liên hệ
+**Sinh viên**: Nguyễn Dương Ngọc Ánh
+**Mã SV**: 23011500
+**Email**: nguyenduongngoanh@student.ptit.edu.vn

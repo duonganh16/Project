@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+@extends('layouts.petfood')
 
 @section('content')
 <div class="container">

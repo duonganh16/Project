@@ -27,6 +27,8 @@ class CartController extends Controller
             $cart[$id]['quantity']++;
         } else {
             $cart[$id] = [
+                'name' => $product->name,
+                'price' => $product->price,
                 'product' => $product,
                 'quantity' => 1
             ];
@@ -68,25 +70,51 @@ class CartController extends Controller
     // Đặt hàng
     public function placeOrder(Request $request)
     {
+        // Validate input
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'address' => 'required|string|max:500',
+            'phone' => 'required|string|max:20',
+            'note' => 'nullable|string|max:500',
+        ]);
+
+        $cart = Session::get('cart', []);
+
+        // Check if cart is empty
+        if (empty($cart)) {
+            return redirect('/cart')->with('error', 'Giỏ hàng trống!');
+        }
+
+        // Calculate total amount
+        $totalAmount = 0;
+        foreach ($cart as $item) {
+            $totalAmount += $item['price'] * $item['quantity'];
+        }
+
+        // Create order
         $order = Order::create([
             'name' => $request->name,
             'address' => $request->address,
             'phone' => $request->phone,
             'note' => $request->note,
+            'user_id' => auth()->id(), // Link to user if logged in
+            'status' => 'pending',
+            'total_amount' => $totalAmount,
         ]);
 
-        $cart = Session::get('cart', []);
+        // Create order items
         foreach ($cart as $item) {
             OrderItem::create([
                 'order_id' => $order->id,
                 'product_id' => $item['product']->id,
                 'quantity' => $item['quantity'],
-                'price' => $item['product']->price,
+                'price' => $item['price'], // Use price from cart (may be different from current product price)
             ]);
         }
 
+        // Clear cart
         Session::forget('cart');
 
-        return redirect('/')->with('success', 'Đặt hàng thành công!');
+        return redirect('/')->with('success', 'Đặt hàng thành công! Mã đơn hàng: #' . $order->id);
     }
 }
