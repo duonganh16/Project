@@ -64,19 +64,23 @@ Quan hệ giữa các đối tượng được biểu diễn rõ ràng:
 
 ### ✅ Trang chủ
 
-![Trang chủ](images/homepage.png)
+![Trang chủ](![z6742738895701_22536046c5e2bccb622adf1e76d7201e](https://github.com/user-attachments/assets/64e87a1b-c93e-43f2-831b-a4faa31765a0)
+)
 
 ### ✅ Trang đăng ký / đăng nhập
 
-![Đăng nhập](images/login.png)
+![Đăng nhập](![z6742738905366_b971cab65abf1a8130eaad88c81dec2a](https://github.com/user-attachments/assets/15af7689-1a34-4155-b407-85b98d8c3320)
+)
 
 ### ✅ Giao diện đặt hàng
 
-![Đặt hàng](images/order.png)
+![Đặt hàng](![z6742738892332_3799086cd15c479e8286f4657027d7ad](https://github.com/user-attachments/assets/dde9ee89-be87-4020-9133-9faad5c5ea44)
+)
 
 ### ✅ Quản lý sản phẩm
 
-![Quản lý sản phẩm](images/admin-product.png)
+![Quản lý sản phẩm](![z6742738904938_d573e532d8861741bc49c7d4717b048e](https://github.com/user-attachments/assets/79e78dbc-8caf-4263-ba75-5b876d8f94c9)
+)
 
 ---
 
