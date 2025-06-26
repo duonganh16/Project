@@ -15,6 +15,13 @@
 - Lưu trữ dữ liệu trên Cloud (Aiven)
 
 ---
+## Mục tiêu
+- Tạo một website thương mại điện tử đơn giản dùng Laravel.
+- Làm quen với các khái niệm như: route, controller, model, migration, seeder, middleware.
+- Thực hành thao tác giỏ hàng, xử lý đơn hàng, xác thực người dùng.
+- Làm quen với template Blade và Bootstrap để thiết kế giao diện người dùng.
+
+---
 
 ## 🧩 Công nghệ sử dụng
 
@@ -25,10 +32,21 @@
 - Storage cho ảnh sản phẩm
 
 ---
+## Cấu trúc thư mục chính
+petfood-shop/
+├── app/
+├── resources/
+│   └── views/
+├── routes/
+├── public/
+├── database/
+└── composer.json
+---
 
 ## 📦 Các đối tượng chính (3+)
 
 - `User`: người dùng đăng nhập
+- 'Admin' : người quản lý sản phẩm
 - `Product`: sản phẩm thú cưng
 - `Category`: danh mục sản phẩm
 - `Order`: đơn đặt hàng
@@ -38,9 +56,8 @@
 
 ## 🧱 Sơ đồ cấu trúc (Class Diagram)
 
-![Class Diagram](images/class-diagram.png)
+![Image](https://github.com/user-attachments/assets/47044b1e-afb0-4c46-8bc0-d0682254e8d9)
 
-*Giải thích:*  
 Quan hệ giữa các đối tượng được biểu diễn rõ ràng:
 - 1 `User` có nhiều `Order`
 - 1 `Category` có nhiều `Product`
@@ -52,11 +69,11 @@ Quan hệ giữa các đối tượng được biểu diễn rõ ràng:
 
 ### 1. Activity Diagram: Đặt hàng sản phẩm
 
-![Activity Diagram](images/activity-order.png)
+![Image](https://github.com/user-attachments/assets/46e8a701-e675-47de-a349-db8152a6f1d0)
 
 ### 2. Activity Diagram: Hiển thị sản phẩm theo danh mục
 
-![Activity Diagram](images/activity-filter-category.png)
+![Image](https://github.com/user-attachments/assets/41f10b41-3009-4457-b124-40aa7114932c)
 
 ---
 
@@ -64,22 +81,72 @@ Quan hệ giữa các đối tượng được biểu diễn rõ ràng:
 
 ### ✅ Trang chủ
 
-![Trang chủ](images/homepage.png)
+![Image](https://github.com/user-attachments/assets/2cc768e1-429a-477c-b057-7e1c41850a28)
 
 ### ✅ Trang đăng ký / đăng nhập
 
-![Đăng nhập](images/login.png)
+![Image](https://github.com/user-attachments/assets/5544ad8a-73ca-40e4-adbb-003de3603376)
 
 ### ✅ Giao diện đặt hàng
 
-![Đặt hàng](images/order.png)
+![Image](https://github.com/user-attachments/assets/67c41c9c-d983-46b3-a41e-db865a80b21b)
 
 ### ✅ Quản lý sản phẩm
 
-![Quản lý sản phẩm](images/admin-product.png)
+![Image](https://github.com/user-attachments/assets/0fb5dc4d-d87c-49a6-9d41-6bd7da2d6326)
 
 ---
+## Hướng dẫn cài đặt
 
+- git clone https://github.com/duonganh16/petfood-shop.git
+ cd petfood-shop
+- composer install
+- cp .env.example .env
+- php artisan key:generate
+- php artisan migrate --seed
+- php artisan serve
+---
+## Dữ liệu mẫu (Seeder)
+- Admin: admin@example.com / password
+- User: user@example.com / password
+---
+## Bảo mật và xác thực
+- Laravel Breeze cho login/register/logout
+- Middleware kiểm tra phân quyền
+- CSRF token cho form
+- Flash message
+---
+## Các tệp quan trọng
+- web.php
+- ProductController.php
+- CartController.php
+- OrderController.php
+- AdminController.php
+- ContactController.php
+---
+## Sơ đồ kiến trúc hệ thống
+- [Trình duyệt] -> [Laravel Router] -> [Controller] -> [Model] -> [Database]
+---
+## Quy trình hoạt động
+- Đặt hàng: Xem -> Giỏ -> Thanh toán
+- Admin: Đăng nhập -> Xử lý đơn hàng
+---
+## Mô tả chức năng chi tiết
+- Đăng ký / Đăng nhập
+- Xem sản phẩm
+- Thêm giỏ hàng
+- Đặt hàng
+- Admin dashboard
+---
+## Thống kê	
+- Tổng số người dùng, doanh thu, đơn hàng
+---
+## Hướng dẫn bảo trì
+- composer update
+- mysqldump
+- xem log
+- clear cache
+---
 ## 💡 Code minh hoạ
 
 ### ✨ `Product` Model
@@ -122,9 +189,9 @@ public function placeOrder(Request $request)
     return redirect()->route('orders.index')->with('success', 'Đặt hàng thành công!');
 }
 🌍 Liên kết dự án
-🔗 Link Repo GitHub: https://github.com/username/petfood-shop
+🔗 Link Repo GitHub: https://github.com/duonganh16/Project
 
-🌐 Link Demo Codespace (public): https://petfood-shop-yourname.github.dev
+🌐 Link Demo Codespace (public): 
 
 ☁️ CSDL Aiven Cloud: MySQL hosted
 
@@ -144,7 +211,7 @@ public function placeOrder(Request $request)
 
 ---
 
-## � Tính năng Bảo mật đã triển khai
+## 🔒 Tính năng Bảo mật đã triển khai
 
 ### ✅ Authentication & Authorization
 - **Laravel Breeze**: Hệ thống đăng nhập/đăng ký hoàn chỉnh
@@ -234,7 +301,7 @@ chmod +x deploy.sh
 
 ---
 
-📞 Liên hệ
+📞 **Liên hệ**
 **Sinh viên**: Nguyễn Dương Ngọc Ánh
 **Mã SV**: 23011500
-**Email**: nguyenduongngoanh@student.ptit.edu.vn
+**Email**: 23011500@st.phenikaa-uni.edu.vn
